@@ -2,7 +2,7 @@
 $server='localhost';
 $user="root";
 $pass="";
-$database="data_saya";
+$database="db_ajf";
 $conn=mysqli_connect($server,$user,$pass,$database);
 
 ?>

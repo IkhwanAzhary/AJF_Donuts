@@ -1,28 +1,43 @@
-<?php 
+<?php
 include "config.php";
-session_start(); // Memperbaiki typo
-error_reporting(0); // Menambahkan titik koma
+session_start();
+error_reporting(0);
 
 if (isset($_SESSION['username'])) {
-    header("location:./index.html");
-    exit(); // Tambahkan exit setelah header redirect
+    header("location:../index.html");
+    exit();
 }
 
 if (isset($_POST['submit'])) {
     $email = $_POST['email'];
-    $password = md5($_POST["password"]); // Pertimbangkan untuk menggunakan password_hash()
-    $sql = "SELECT * FROM users WHERE email='$email' AND password='$password'"; // Memperbaiki sintaks SQL
-    $result = mysqli_query($conn, $sql);
-    
+    $password = $_POST['password'];
+
+    // Validasi email
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        echo "<script>alert('Email tidak valid')</script>";
+        exit();
+    }
+
+    // Cegah SQL Injection dengan prepared statements
+    $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
     if ($result && $result->num_rows > 0) {
-        $row = mysqli_fetch_assoc($result);
-        $_SESSION['username'] = $row['username'];
-        header("location:./index.html");
-        exit(); // Tambahkan exit setelah redirect
+        $row = $result->fetch_assoc();
+        if (password_verify($password, $row['password'])) {
+            $_SESSION['username'] = $row['username'];
+            header("location:../index.html");
+            exit();
+        } else {
+            echo "<script>alert('Woops! Password Salah')</script>";
+        }
     } else {
-        echo "<script>alert('Woops! Email atau Password Salah');</script>"; // Memperbaiki tanda kutip
+        echo "<script>alert('Woops! Email tidak ditemukan')</script>";
     }
 }
+
 ?>
 
 <!DOCTYPE html>
