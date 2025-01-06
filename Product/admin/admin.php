@@ -1,5 +1,5 @@
 <?php 
-include "../config.php";
+include "../config/config.php";
 $product = query("SELECT * FROM product");
 ?>
 
@@ -21,6 +21,7 @@ $product = query("SELECT * FROM product");
             </div>
             <div class="card-body">
                 <a href="../tambah/tambah.php" class="btn btn-primary">Tambah Data</a>
+                <a href="../logout/logout.php" class="btn btn-danger">Lougout</a>
                 <table class="table table-bordered">
                     <tr>
                         <th>Gambar</th>
@@ -37,8 +38,8 @@ $product = query("SELECT * FROM product");
                             <td> <?= $pdt["detail"]; ?></td>
                             <td> <?= $pdt["harga"]; ?></td>
                             <td>
-                                <a href="" class="btn btn-sm btn-warning">Edit</a>
-                                <a href="" class="btn btn-sm btn-danger">Hapus</a>
+                                <a href="../edit/edit.php?id=<?= $pdt["id"]; ?>" class="btn btn-sm btn-warning">Edit</a>
+                                <a href="../hapus/hapus.php?id=<?= $pdt["id"]; ?>" class="btn btn-sm btn-danger">Hapus</a>
                             </td>
                         </tr>
                     <?php $i++; ?>

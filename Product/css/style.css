@@ -7,7 +7,7 @@
   font-family: poppins, sans-serif;
 }
 body {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(img/DonatBesar2.jpg);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/DonatBesar2.jpg);
   min-height: 100vh;
   background-position: center;
   background-size: cover;
@@ -178,4 +178,19 @@ input {
 .login-register-text {
   color: #111;
   font-weight: 600;
+}
+
+.container .login-email .btn-back {
+  display: block;
+  width: 100%;
+  padding: 15px 20px;
+  text-align: center;
+  border: none;
+  background: #f80202;
+  outline: none;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s;
 }

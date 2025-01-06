@@ -76,8 +76,48 @@ function upload() {
     $namafileBaru .='.';
     $namafileBaru .= $ekstensiGambar;
 
-    move_uploaded_file($tmpName, "img/" . $namafileBaru);
+    move_uploaded_file($tmpName, "../img/" . $namafileBaru);
 
     return $namafileBaru;
 }
+
+function hapus($id) {
+    global $conn;
+
+    $product = query("SELECT * FROM product WHERE id = $id")[0];
+    if( $product['gambar'] != 'nophoto.jpg') {
+        unlink('../img/' . $product['gambar']);
+    }
+
+    mysqli_query($conn, "DELETE FROM product WHERE id = $id");
+
+    return mysqli_affected_rows($conn);
+}
+
+function edit($data) {
+    global $conn;
+
+    $id = $data["id"];
+    $gambarLama = htmlspecialchars($data["gambarLama"]);
+    if($_FILES['gambar']['error'] === 4) {
+        $gambar = $gambarLama;
+    } else {
+        $gambar = upload();
+    }
+    $nama = htmlspecialchars($data["nama"]);
+    $detail = htmlspecialchars($data["detail"]);
+    $harga = htmlspecialchars($data["harga"]);
+
+    $query = "UPDATE product SET
+            gambar = '$gambar',
+            nama = '$nama',
+            detail = '$detail',
+            harga = '$harga'
+            WHERE id = '$id'
+            ";
+    mysqli_query($conn, $query);
+
+    return mysqli_affected_rows($conn);
+}
+
 ?>

@@ -61,17 +61,17 @@
   }
 
   #navbar form .button1 {
-    background: rgb(253, 4, 4);
+    /* background: rgb(253, 4, 4);
     color: white;
-    border: 1px solid rgb(0, 0, 0);
-    margin-left: 3px;
+    border: 1px solid rgb(0, 0, 0); */
+    margin-left: 5px;
   }
   
   /* home section */
   #home {
     width: 100%;
     height: 100vh;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(img/DonatBesar2.jpg);
+    background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url(../img/DonatKacang.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 88%;
@@ -154,7 +154,7 @@
   /* top cards */
   #top-cards {
     width: 100%;
-    height: 480px;
+    height: 580px;
     padding-top: 70px;
   }
   

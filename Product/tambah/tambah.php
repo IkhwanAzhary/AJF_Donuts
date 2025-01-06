@@ -1,6 +1,6 @@
 <?php 
 
-    include "../config.php";
+    include "../config/config.php";
 
     $product = query("SELECT * FROM product");
 
@@ -52,27 +52,27 @@
                 Input Data Customer
             </div>
             <div class="card-body">
-                <form action="" method="POST" class="form-item">
+                <form action="" method="post" class="form-item" enctype="multipart/form-data">
 
-                <div class="form-group">
-                    <label for="gambar">Gambar</label>
-                    <input type="file" name="gambar" id="gambar" class="form-control col-md-9" placeholder="Masukan Gambar">
-                </div>
-                <div class="form-group">
-                    <label for="name">Nama</label>
-                    <input type="text" name="nama" id="nama" class="form-control col-md-9" placeholder="Masukan Nama">
-                </div>
-                <div class="form-group">
-                    <label for="detail">Detail</label>
-                    <input type="text" name="detail" id="detail" class="form-control col-md-9" placeholder="Detail">
-                </div>
-                <div class="form-group">
-                    <label for="harga">Harga</label>
-                    <input type="text" name="harga" id="harga" class="form-control col-md-9" placeholder="Masukan Harga">
-                </div>
+                    <div class="form-group">
+                        <label for="gambar">Gambar</label>
+                        <input type="file" name="gambar" id="gambar" class="form-control col-md-9" placeholder="Masukan Gambar">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Nama</label>
+                        <input type="text" name="nama" id="nama" class="form-control col-md-9" placeholder="Masukan Nama">
+                    </div>
+                    <div class="form-group">
+                        <label for="detail">Detail</label>
+                        <input type="text" name="detail" id="detail" class="form-control col-md-9" placeholder="Detail">
+                    </div>
+                    <div class="form-group">
+                        <label for="harga">Harga</label>
+                        <input type="text" name="harga" id="harga" class="form-control col-md-9" placeholder="Masukan Harga">
+                    </div>
 
-                <button type="submit" class="btn btn-primary" name="simpan">SIMPAN</button>
-                <button type="reset" class="btn btn-danger">BATAL</button>
+                    <button type="submit" class="btn btn-primary" name="simpan">SIMPAN</button>
+                    <button type="reset" class="btn btn-danger">BATAL</button>
 
                 </form>
             </div>
